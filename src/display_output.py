@@ -1,4 +1,4 @@
-def class display_output:
+class display_output:
 	"""A class to show and modify displayed output"""
 
 	def __init__(self, word):
@@ -10,6 +10,6 @@ def class display_output:
 		for num in indexes:
 			self.output[num] = letter
 	
-	def string():
+	def string(self):
 		"""Call display_output.string() to show a string to the outside world"""
 		return "".join(self.output)

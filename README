@@ -1,1 +1,9 @@
 This is a new app we're all making!  Carrots and chocholate for everyone!
+
+We want to be following the MVC design pattern.  That's Model, View, Controller. 
+Model is the database backend.  It's where all tough computations take place.  
+View is the user interface.  It should be extrememly dumb and pass all it's work 
+to the Controller.  The Controller is a middle-man between the Model and the View.  
+It should listen for events in the View (user interface) and in response perform
+logic and invoke functions of the View or Model.  It's like the Genie between
+Aladdin and Jasmine:  he can connect the two in love, but only if you ask.
