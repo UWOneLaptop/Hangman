@@ -14,3 +14,11 @@ class hangman_controller:
 		"""called when the user picks their next letter.  Will update
 		the view with the results (good letter?  bad letter?  you win?
 		you LOSE? (good DAY sir!))"""
+		
+	def goodletter(self, letter):
+		temp = display_output.word
+		a = []
+		for n in range (0, len(temp)):
+			if letter == temp[n]:
+				a.append(n)
+		display_output.accept(self, letter, a)
