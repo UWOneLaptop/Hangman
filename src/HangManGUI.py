@@ -1,6 +1,20 @@
 #!/usr/bin/env python
 
-# add drop down menu to select 3 levels of dificulty and pass to new game
+'''
+Change
+	def __init__(self): 
+for
+	def __init__(self, controller):
+	self.controller = controller
+
+
+Functions you'll find interesting:
+	self.set_counter() updates the variable that counts the guesses left
+	self.display_guesses_left() updates the GUI with the counter of guesses left
+	self.set_word() updates the GUI with the word we are guessing
+	self.reset_game() restarts all the GUI elements on new game, win, and loose
+	self.key_pressed_event() gets triggered when a key is pressed on the keyboard or the screen, this should update the model via the controller (line 114, use self.controller)
+'''
 
 import pygtk
 pygtk.require('2.0')
@@ -16,7 +30,7 @@ class HangManGUI:
 		print "Display number of guesses left"
 		self.state_box.get_children()[0].set_text(_("Guesses left: ")+str(self.counter))
 	
-	def set_string(self, string):
+	def set_word(self, string):
 		print "Display choosing letters"
 		self.state_box.get_children()[2].set_text(string)
 	
@@ -96,17 +110,14 @@ class HangManGUI:
 			letter_index = self.letters.index(keyname)
 			self.selected_letters[letter_index] = keyname
 			if self.letters_to_select[letter_index] != False:
+				# removing hint
 				self.main_box.get_children()[2].set_text("")
 				print keyname + " key detected"
-				self.letters_to_select[letter_index] = False
-				self.set_counter(self.counter-1)
-				self.set_string("??A?A?")
+				# do something with the controller
 
 		# update the GUI
 		self.display_letters_selected()
 		self.display_letters_to_select()
-		if keyname == "A":
-			self.reset_game()
 	
 	def exit(self, widget, data=None):
 		print "Exiting"
