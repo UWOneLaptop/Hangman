@@ -118,10 +118,6 @@ class HangManGUI:
 		# update the GUI
 		self.display_letters_selected()
 		self.display_letters_to_select()
-	
-	def exit(self, widget, data=None):
-		print "Exiting"
-		return self.delete_event(widget)
 
 	def delete_event(self, widget, event=None, data=None):
 		print "destroy signal occurred"
@@ -214,8 +210,6 @@ class HangManGUI:
 		self.window.set_title('Hang Man')
 		self.window.connect("delete_event", self.delete_event)
 		self.window.connect('key_press_event', self.key_pressed_event)
-		self.new_game_button.connect("clicked", self.new_game, None)
-		self.exit_button.connect("clicked", self.exit, None)
 		
 		self.top_box.pack_start(self.new_game_button, False, False, 0)
 		self.top_box.pack_start(self.difficulty_menu, False, False, 0)

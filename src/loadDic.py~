@@ -1,8 +1,0 @@
-def loadDic(lang = "en"):
-	"""Load file lang_dict.txt and pick a word from it at random"""
-	from random import choice
-	dictionary = open(lang+"_dict.txt").readlines()
-	# Read dictionary line by line and turn into list
-#	dictionary = [word.rstrip().lower() for word in dictionary]
-	# Strip new line character from entries and make sure everything is uniformly lowercase
-	return choice(dictionary).rstrip().lower()

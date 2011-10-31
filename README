@@ -1,5 +1,11 @@
 This is a new app we're all making!  Carrots and chocholate for everyone!
 
+HOW TO START
+run the Hangman.sh script with
+'source Hangman.sh'
+or go into src directory and run
+'python hangman_controller.py'
+
 We want to be following the MVC design pattern.  That's Model, View, Controller. 
 Model is the database backend.  It's where all tough computations take place.  
 View is the user interface.  It should be extrememly dumb and pass all it's work 

@@ -3,7 +3,7 @@ class display_output:
 
 	def __init__(self, word):
 		"""Initialize output to a ? for every character in the word"""
-		self.word = ["?" for char in word]
+		self.output = ["?" for char in word]
 	
 	def accept(self, letter, indexes):
 		"""Change each ? at the index specified to letter given"""
