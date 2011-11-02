@@ -114,6 +114,7 @@ class HangManGUI:
 				self.main_box.get_children()[2].set_text("")
 				print keyname + " key detected"
 				# do something with the controller
+				self.key_pressed_callback(keyname)
 
 		# update the GUI
 		self.display_letters_selected()
@@ -174,7 +175,9 @@ class HangManGUI:
 		self.letters_selected_table.show_all()
 
 
-	def __init__(self):
+	def __init__(self, callback):
+		""" Accepts a callback function to call when a key is pressed """
+		self.key_pressed_callback = callback
 		self.counter = 6;
 		self.new_game_button = gtk.Button(_("New Game"))
 		self.exit_button = gtk.Button(_("Exit"))
