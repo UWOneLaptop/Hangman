@@ -112,6 +112,8 @@ class HangManGUI:
 			if self.letters_to_select[letter_index] != False:
 				# removing hint
 				self.main_box.get_children()[2].set_text("")
+				# clear selected letter tag
+				self.letters_to_select[letter_index] = False;
 				print keyname + " key detected"
 				# do something with the controller
 				self.key_pressed_callback(keyname)
