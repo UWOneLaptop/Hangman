@@ -20,6 +20,7 @@ class hangman_controller:
 		self.picked.clear()
 		# reset the view
 		print "pssssst word is " + self.word
+		self.view.set_pssssst_word(self.word)
 
 	def next_letter(self, letter):
 		"""called when the user picks their next letter.  Will update

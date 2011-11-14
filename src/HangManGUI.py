@@ -32,7 +32,8 @@ class HangManGUI:
 	
 	def set_word(self, string):
 		print "Display choosing letters"
-		self.state_box.get_children()[2].set_text(string)
+		#self.state_box.get_children()[2].set_text(string)
+		self.state_box.get_children()[2].set_markup('<span size="xx-large">'+string+'</span>')
 	
 	def set_counter(self, counter):
 		if counter >-1:
@@ -66,7 +67,7 @@ class HangManGUI:
 			self.reset_game()
 	
 	def win(self):
-		dialog = gtk.MessageDialog(self.window, gtk.DIALOG_MODAL, gtk.MESSAGE_INFO, gtk.BUTTONS_YES_NO, _("Start a new game??"))
+		dialog = gtk.MessageDialog(self.window, gtk.DIALOG_MODAL, gtk.MESSAGE_INFO, gtk.BUTTONS_YES_NO, _("Good job!, you just saved your life!\nStart a new game??"))
 		dialog.set_title(_("Good job!, you just saved your life"))
 		response = dialog.run()
 		dialog.destroy()
@@ -75,12 +76,12 @@ class HangManGUI:
 			self.reset_game()
 	
 	def pass_away(self):
-		dialog = gtk.MessageDialog(self.window, gtk.DIALOG_MODAL, gtk.MESSAGE_INFO, gtk.BUTTONS_YES_NO, _("Start a new game??"))
+		dialog = gtk.MessageDialog(self.window, gtk.DIALOG_MODAL, gtk.MESSAGE_INFO, gtk.BUTTONS_YES_NO, _("Game over!, try again.\nStart a new game??"))
 		dialog.set_title("Game over!, try again.")
 		response = dialog.run()
 		dialog.destroy()
 		if response == gtk.RESPONSE_YES: # call reset_game()
-			print "Creating new game"
+			print "pass away"
 			self.reset_game()
 	
 	def reset_game(self):
@@ -93,7 +94,7 @@ class HangManGUI:
 		'''
 		print "Resetting game"
 		self.set_counter(6)
-		self.state_box.get_children()[2].set_text("??????")
+		self.state_box.get_children()[2].set_markup('<span size="xx-large">??????</span>')
 		self.main_box.get_children()[2].set_text(_("Hint: Please, press any key to play."))
 		self.selected_letters = [""] * self.num_buttons
 		self.letters_to_select = self.letters[:]
@@ -112,6 +113,8 @@ class HangManGUI:
 			if self.letters_to_select[letter_index] != False:
 				# removing hint
 				self.main_box.get_children()[2].set_text("")
+				# clear selected letter tag
+				self.letters_to_select[letter_index] = False;
 				print keyname + " key detected"
 				# do something with the controller
 				self.key_pressed_callback(keyname)
@@ -199,6 +202,7 @@ class HangManGUI:
 		self.letters = ["A", "B", "C", "D", " ", " ", "E", "F", "G", "H", " ", " ", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 		self.state_image = gtk.image_new_from_file('images/state_0.png')
 		self.word_label = gtk.Label("??????")
+		self.word_label.set_markup('<span size="xx-large">??????</span>')
 		self.hint_label = gtk.Label(_("Hint: Please, press any key to play."))
 		self.chosen_letters_label = gtk.Label("Chosen letters: ")
 		self.guesses_left = gtk.Label(_("Guesses left: ")+str(self.counter))
